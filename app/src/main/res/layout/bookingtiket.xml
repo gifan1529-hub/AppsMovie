@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Ticket.BookingTicket">
+
+    <!-- Header yang akan selalu terlihat -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_layout"
+        android:layout_width="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Tombol Kembali -->
+        <ImageView
+            android:id="@+id/btnbackbooking"
+            android:layout_width="30dp"
+            android:alpha="0.5"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_circle"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Stepper (Indikator Langkah) -->
+        <LinearLayout
+            android:id="@+id/stepper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- Anda bisa membuat ini dinamis nanti dari kode Kotlin -->
+            <TextView
+                android:id="@+id/step1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="  1 "
+                android:background="@drawable/bg_circle"
+                android:textColor="@color/white"
+                android:backgroundTint="#7E57C2"/>
+
+            <TextView
+                android:id="@+id/step2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="  2 "
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_circle"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/step3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="  3 "
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_circle"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/step4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="  4 "
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_circle"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Wadah untuk menampilkan Fragment dari setiap langkah -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/bookingnavhostfragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:layout_constraintBottom_toTopOf="@+id/footer_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav"
+         />
+
+
+    <!-- Footer yang akan selalu terlihat -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Tombol Next/Finish -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnnextstep"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="25dp"
+            android:layout_height="60dp"
+            android:text="Next"
+            android:fontFamily="@font/poppinsmedium"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:backgroundTint="#7E57C2"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/next"
+            app:iconGravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

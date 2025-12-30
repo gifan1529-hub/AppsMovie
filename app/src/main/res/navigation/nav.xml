@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/ticket_selection">
+
+    <fragment
+        android:id="@+id/ticket_selection"
+        android:name="com.example.appsmovie.TicketSelection.TicketSelectionFrag"
+        android:label="Home"
+        tools:layout="@layout/fragment_ticket_selection" >
+        <action
+            android:id="@+id/action_ticketSelectionFragment_to_pilihSeatFragment"
+            app:destination="@id/pilih_seat" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pilih_seat"
+        android:name="com.example.appsmovie.Seat.PilihSeatFragment"
+        tools:layout="@layout/fragment_pilih_seat">
+        <action
+            android:id="@+id/action_pilihSeatFragment_to_paymentFragment"
+            app:destination="@id/payment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/payment"
+        android:name="com.example.appsmovie.Payment.PaymentFragment"
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="totalAmount"
+            app:argType="float"
+            android:defaultValue="0.0" />
+
+        <action
+            android:id="@+id/action_paymentFragment_to_payementResultFragment"
+            app:destination="@id/payement_result" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/payement_result"
+        android:name="com.example.appsmovie.PayementResultFragment"
+        tools:layout="@layout/fragment_payement_result" />
+
+
+</navigation>

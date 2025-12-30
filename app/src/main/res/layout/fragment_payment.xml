@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:padding="16dp"
+    tools:context=".Payment.PaymentFragment">
+
+    <TextView
+        android:id="@+id/label_payment_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="Select Payment Options"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Wadah untuk pilihan pembayaran -->
+    <RadioGroup
+        android:id="@+id/payment_radio_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_payment_options">
+
+        <!-- Pilihan 1: Bank Transfer -->
+        <RadioButton
+            android:id="@+id/rb_bank_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/bgpayment"
+            android:button="@null"
+            android:drawableEnd="@drawable/radio"
+            android:fontFamily="@font/poppinsmedium"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Bank Transfer"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <!-- Pilihan 2: Cash -->
+        <RadioButton
+            android:id="@+id/rb_cash"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bgpayment"
+            android:button="@null"
+            android:drawableEnd="@drawable/radio"
+            android:fontFamily="@font/poppinsmedium"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Cash"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <!-- Total Amount -->
+
+    <TextView
+        android:id="@+id/label_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="Total Amount"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/payment_radio_group" />
+
+    <TextView
+        android:id="@+id/tv_payment_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/ijo"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.396"
+        tools:text="$0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    

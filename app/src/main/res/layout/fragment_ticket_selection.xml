@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bakgron"
+    tools:context=".TicketSelection.TicketSelectionFrag">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Kartu Informasi Film -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_movie_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#2C2C2E"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_ticket_poster"
+                    android:layout_width="355dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/RoundedImageView"
+                    tools:src="@drawable/item" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:backgroundTint="@color/white"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_ticket_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppinsmedium"
+                    tools:text="sdfdfssd" />
+
+                <TextView
+                    android:id="@+id/tv_ticket_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:layout_marginTop="0dp"
+                    android:textColor="@color/abumid"
+                    tools:text="sddffdfsddf" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Peringatan -->
+        <TextView
+            android:id="@+id/tv_warning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="You need to select the mandatory fields (*) to proceed to the checkout page."
+            android:textColor="@color/abumid"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/card_movie_info"
+            app:layout_constraintEnd_toEndOf="@id/card_movie_info"
+            app:layout_constraintTop_toBottomOf="@id/card_movie_info" />
+
+        <!-- Tombol "Choose a Movie Theater" -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_choose_theater"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="24dp"
+            android:paddingStart="20dp"
+            android:text="Choose a Movie Theater *"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:icon="@drawable/next"
+            app:iconGravity="end"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/card_movie_info"
+            app:layout_constraintStart_toStartOf="@id/card_movie_info"
+            app:layout_constraintTop_toBottomOf="@id/tv_warning"
+            app:strokeColor="#7E57C2" />
+
+        <!-- Tombol "Select Session" -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_select_session"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="16dp"
+            android:paddingStart="20dp"
+            android:text="Select Session *"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:icon="@drawable/next"
+            app:iconGravity="end"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/btn_choose_theater"
+            app:layout_constraintStart_toStartOf="@id/btn_choose_theater"
+            app:layout_constraintTop_toBottomOf="@id/btn_choose_theater"
+            app:strokeColor="#7E57C2" />
+
+        <!-- Tombol "Buffet Products" -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_buffet"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="16dp"
+            android:paddingStart="20dp"
+            android:text="Buffet Products"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:icon="@drawable/next"
+            app:iconGravity="end"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/btn_select_session"
+            app:layout_constraintStart_toStartOf="@id/btn_select_session"
+            app:layout_constraintTop_toBottomOf="@id/btn_select_session"
+            app:strokeColor="#7E57C2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+    

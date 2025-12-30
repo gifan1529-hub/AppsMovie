@@ -1,0 +1,5 @@
+<!-- Contoh sederhana, ganti dengan gambar Anda -->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/confetti"
+    android:tileMode="repeat" />
+    
