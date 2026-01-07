@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appsmovie.BookingManager
 import com.example.appsmovie.R
 import com.example.appsmovie.Ticket.BookingTicketVM // Import Shared ViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.ReadOnlyProperty
-
+@AndroidEntryPoint
 class BuffetProduct : AppCompatActivity() {
 
     private val viewModel: BookingTicketVM = BookingManager.viewModel

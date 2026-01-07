@@ -29,8 +29,9 @@ import java.text.NumberFormat
 import java.util.Locale
 import android.Manifest
 import com.example.appsmovie.DetailTicket2.detailTicket2
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.log
-
+@AndroidEntryPoint
 class PaymentFragment : Fragment() {
 
     private var _binding: FragmentPaymentBinding? = null

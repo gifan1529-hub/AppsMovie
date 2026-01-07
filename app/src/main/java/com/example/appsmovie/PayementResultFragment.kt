@@ -12,8 +12,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.appsmovie.Ticket.BookingTicketVM
 import com.example.appsmovie.databinding.FragmentPayementResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
-
+@AndroidEntryPoint
 class PayementResultFragment : Fragment() {
     private val bookingViewModel: BookingTicketVM = BookingManager.viewModel
     private var _binding: FragmentPayementResultBinding? = null

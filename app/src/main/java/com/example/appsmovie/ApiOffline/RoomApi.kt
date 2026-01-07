@@ -1,6 +1,7 @@
 package com.example.appsmovie.ApiOffline // <-- TAMBAHKAN BARIS INI
 
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -13,5 +14,7 @@ data class RoomApi(
     val type: String?,
     val genre: String?,
     val releaseYear: Int?,
-    val rating: Double?
+    val rating: Double?,
+    var isFavorite: Boolean = false,
+    val plot: String?,
 )

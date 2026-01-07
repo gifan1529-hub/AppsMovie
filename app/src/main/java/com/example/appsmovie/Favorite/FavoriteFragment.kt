@@ -8,13 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.appsmovie.Favorite.FavoriteAdapter
-import com.example.appsmovie.Api.MovieResult
-import com.example.appsmovie.BookingManager.viewModel
 import com.example.appsmovie.DetailFilm.DetailFilm
+import com.example.appsmovie.Home.AdapterOffline
 import com.example.appsmovie.data.Movie
-import com.example.appsmovie.databinding.FragmentFavoriteBinding
 
+import com.example.appsmovie.databinding.FragmentFavoriteBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.collections.mutableListOf
+
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
@@ -40,8 +42,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        favoriteAdapter = FavoriteAdapter(emptyList())
-
+        favoriteAdapter = FavoriteAdapter(mutableListOf())
         binding.rvFavorite.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = favoriteAdapter
@@ -54,14 +55,13 @@ class FavoriteFragment : Fragment() {
                 val intent = Intent(requireActivity(), DetailFilm::class.java).apply {
                     putExtra("MOVIE_ID", movie.id)
                     putExtra("MOVIE_TITLE", movie.title)
-                    putExtra("MOVIE_POSTER_URL", movie.poster_path)
+                    putExtra("MOVIE_POSTER_URL", movie.posterUrl)
                 }
                 startActivity(intent)
             }
         }
         favoriteAdapter.setOnItemClickListener(clickListener)
     }
-
 
     private fun observeFavoriteMovies() {
         FavVM.favoriteMovies.observe(viewLifecycleOwner) { favoriteMovies ->
@@ -71,7 +71,7 @@ class FavoriteFragment : Fragment() {
             } else {
                 binding.tvEmptyFavorites.visibility = View.GONE
                 binding.rvFavorite.visibility = View.VISIBLE
-                favoriteAdapter.updateData(favoriteMovies)
+                favoriteAdapter.setData(favoriteMovies)
             }
         }
     }

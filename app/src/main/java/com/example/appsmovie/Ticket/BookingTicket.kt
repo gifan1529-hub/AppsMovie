@@ -14,15 +14,13 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.appsmovie.BookingManager
 import com.example.appsmovie.R
 import com.example.appsmovie.RoomDatabase.AppDatabase
-import com.example.appsmovie.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BookingTicket : AppCompatActivity() {
 
     private lateinit var navController: NavController
-    private val bookingViewModel: BookingTicketVM by viewModels {
-        val database = AppDatabase.getInstance(applicationContext)
-        ViewModelFactory(database, applicationContext)
-    }
+    private val bookingViewModel: BookingTicketVM by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         enableEdgeToEdge()

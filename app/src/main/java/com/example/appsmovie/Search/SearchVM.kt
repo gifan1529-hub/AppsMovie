@@ -7,11 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appsmovie.Api.ApiClient
 import com.example.appsmovie.Api.MovieResult
+import com.example.appsmovie.ApiOffline.RoomApi
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchVM() : ViewModel() {
-    private val _searchResults = MutableLiveData<List<MovieResult>>()
-    val searchResults: LiveData<List<MovieResult>> = _searchResults
+@HiltViewModel
+class SearchVM @Inject constructor(
+    private val searchMovie: SearchMovieUC
+) : ViewModel() {
+    private val _searchResults = MutableLiveData<List<RoomApi>>()
+    val searchResults: LiveData<List<RoomApi>> = _searchResults
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -19,27 +26,31 @@ class SearchVM() : ViewModel() {
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?> = _errorMessage
 
+    private var searchJob: Job? = null
     fun searchMovies(query: String) {
-        if(query.isBlank()){
-            _searchResults.value = emptyList()
-            return
-        }
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            searchMovie.execute(query).collect { result ->
+                when (result) {
+                    is SearchResult.Loading -> {
+                        _isLoading.postValue(true)
+                    }
 
-        viewModelScope.launch {
-            _isLoading.value = true
-            try {
-                val response = ApiClient.create().searchTitles(query)
-                val filteredResults = response.results.filter { movie ->
-                    movie.titleText?.contains(query, ignoreCase = true) == true
+                    is SearchResult.Success -> {
+                        _isLoading.postValue(false)
+                        _searchResults.postValue(result.movies)
+                    }
+
+                    is SearchResult.Error -> {
+                        _isLoading.postValue(false)
+                        _errorMessage.postValue(result.message)
+                    }
+
+                    is SearchResult.EmptyQuery -> {
+                        _isLoading.postValue(false)
+                        _searchResults.postValue(emptyList())
+                    }
                 }
-                _searchResults.value = filteredResults
-                Log.d("SearchVM", "Pencarian untuk '$query' berhasil, ditemukan: ${response.results.size} hasil.")
-            } catch (e: Exception) {
-                val errorMsg = "Error: ${e.message}"
-                _errorMessage.value = errorMsg
-                Log.e("SearchVM", errorMsg, e)
-            } finally {
-                _isLoading.value = false
             }
         }
     }

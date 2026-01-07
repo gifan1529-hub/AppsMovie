@@ -2,6 +2,8 @@ package com.example.appsmovie.SharedPreferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.annotation.AnimRes
+import dagger.hilt.android.AndroidEntryPoint
 
 class SharedPreferences (context: Context) {
 

@@ -1,4 +1,4 @@
-package com.example.appsmovie.Ticket
+ package com.example.appsmovie.Ticket
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appsmovie.RoomDatabase.BookingHistoryDao
 import com.example.appsmovie.Seat.Seat
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-data class BuffetItem(
+ data class BuffetItem(
     val id: Int,
     val name: String,
     val description: String,
@@ -31,8 +33,13 @@ data class BookingData(
     var selectedBuffet: String? = "None",
     var totalPrice: Double = 0.0
 )
-
-class BookingTicketVM (private val BookingDao: BookingHistoryDao) : ViewModel() {
+@HiltViewModel
+class BookingTicketVM @Inject constructor (
+    private val BookingDao: BookingHistoryDao,
+    private val validateSeatUC: ValidateSeatUC,
+    private val calculatePriceUC: CalculatePriceUC,
+    private val buffetMenuUC: BuffetMenuUC
+) : ViewModel() {
     private val _areSeatsValid = MutableLiveData<Boolean>(false)
     val areSeatsValid: LiveData<Boolean> get() = _areSeatsValid
 
@@ -52,15 +59,7 @@ class BookingTicketVM (private val BookingDao: BookingHistoryDao) : ViewModel() 
 
     init {
         _bookingData.value = BookingData()
-        loadBuffetMenu()
-    }
-
-    private fun loadBuffetMenu() {
-       _buffetMenuList.value = listOf(
-            BuffetItem(1, "Large Menu", "Large Popcorn\nLarge Coco Cola (400 ml.)", 30.0, "https://media.istockphoto.com/id/681903568/photo/popcorn-in-box-with-cola.jpg?s=612x612&w=0&k=20&c=0rXGh6COImJ8iYpv99Yt2dQOyMneVw_rJw6QwsZPrh4="),
-            BuffetItem(2, "Medium Menu", "Medium Popcorn\nMedium Coco Cola (330 ml.)", 20.0, "https://media.istockphoto.com/id/681903568/photo/popcorn-in-box-with-cola.jpg?s=612x612&w=0&k=20&c=0rXGh6COImJ8iYpv99Yt2dQOyMneVw_rJw6QwsZPrh4="),
-            BuffetItem(3, "Small Menu", "Small Popcorn\nSmall Coco Cola (250 ml.)", 15.0, "https://media.istockphoto.com/id/681903568/photo/popcorn-in-box-with-cola.jpg?s=612x612&w=0&k=20&c=0rXGh6COImJ8iYpv99Yt2dQOyMneVw_rJw6QwsZPrh4=")
-        )
+        _buffetMenuList.value = buffetMenuUC()
     }
 
     fun onConfirmPaymentClicked() {
@@ -71,6 +70,23 @@ class BookingTicketVM (private val BookingDao: BookingHistoryDao) : ViewModel() 
         paymentTrigger.value = false
     }
 
+    private fun updateStateAndValidate(){
+        val currentData = _bookingData.value ?: return
+
+        val newTotal = calculatePriceUC(
+            currentData.adultTickets,
+            currentData.childTickets,
+            _buffetMenuList.value ?: emptyList()
+        )
+        currentData.totalPrice = newTotal
+
+        val totalTickets = currentData.adultTickets + currentData.childTickets
+        val seatsValid = validateSeatUC(totalTickets, currentData.selectedSeats.size)
+        _areSeatsValid.postValue(seatsValid)
+
+        _bookingData.postValue(currentData)
+    }
+
     private fun updateBuffetAndRecalculate() {
         val currentData = _bookingData.value ?: return
         var buffetTotal = 0.0
@@ -78,78 +94,49 @@ class BookingTicketVM (private val BookingDao: BookingHistoryDao) : ViewModel() 
             buffetTotal += buffetItem.price * buffetItem.quantity
         }
         currentData.buffetSubtotal = buffetTotal
-        recalculateTotalPrice()
+        updateStateAndValidate()
     }
-
-    private fun recalculateTotalPrice() {
-        val currentData = _bookingData.value ?: return
-        val adultTicketPrice = 40.0
-        val childTicketPrice = 25.0
-        val ticketTotal = (currentData.adultTickets * adultTicketPrice) + (currentData.childTickets * childTicketPrice)
-        val newTotal = ticketTotal + currentData.buffetSubtotal
-        currentData.totalPrice = newTotal
- _bookingData.postValue(currentData)
-    }
-
 
     fun removeBuffetItem(item: BuffetItem) {
-        val menuList = _buffetMenuList.value ?: return
-        menuList.find { it.id == item.id }?.let {
-            if (it.quantity > 0) { it.quantity-- }
+        _buffetMenuList.value?.find { it.id == item.id }?.let {
+            if (it.quantity > 0) {
+                it.quantity--
+            }
         }
-        _buffetMenuList.postValue(menuList)
         updateBuffetAndRecalculate()
     }
 
     fun addBuffetItem(item: BuffetItem) {
-        val menuList = _buffetMenuList.value ?: return
-        menuList.find { it.id == item.id }?.quantity++
-        _buffetMenuList.postValue(menuList)
+        _buffetMenuList.value?.find { it.id == item.id }?.quantity++
         updateBuffetAndRecalculate()
-    }
-
-    private fun validateSeatSelection() {
-        val data = _bookingData.value ?: return
-        val totalTickets = data.adultTickets + data.childTickets
-        val totalSeatsSelected = data.selectedSeats.size
-
-        _areSeatsValid.value = totalTickets > 0 && totalSeatsSelected == totalTickets
     }
 
     fun addAdultTicket() {
         val currentData = _bookingData.value ?: return
         currentData.adultTickets++
-        recalculateTotalPrice()
-         _bookingData.postValue(currentData)
-        validateSeatSelection()
+        updateStateAndValidate()
     }
 
     fun removeAdultTicket() {
         val currentData = _bookingData.value ?: return
         if (currentData.adultTickets > 0) {
             currentData.adultTickets--
-            recalculateTotalPrice()
-            _bookingData.postValue(currentData)
+            updateStateAndValidate()
         }
-        validateSeatSelection()
     }
 
     fun addChildTicket() {
         val currentData = _bookingData.value ?: return
         currentData.childTickets++
-        recalculateTotalPrice()
-        _bookingData.postValue(currentData)
-        validateSeatSelection()
+        updateStateAndValidate()
     }
 
     fun removeChildTicket() {
         val currentData = _bookingData.value ?: return
         if (currentData.childTickets > 0) {
             currentData.childTickets--
-            recalculateTotalPrice()
-            _bookingData.postValue(currentData)
+            updateStateAndValidate()
         }
-        validateSeatSelection()
     }
 
     fun confirmBuffetSelection() {
@@ -195,7 +182,7 @@ class BookingTicketVM (private val BookingDao: BookingHistoryDao) : ViewModel() 
                 currentData.selectedSeats.add(seat.id)
             }
         }
-        _bookingData.postValue(currentData)
+        updateStateAndValidate()
     }
 
     fun resetBookingData() {

@@ -12,7 +12,6 @@ class Notification: Application() {
         super.onCreate()
         createNotificationChannels()
     }
-
     private fun createNotificationChannels(){
         // ngecek versi android
         // harus android 8

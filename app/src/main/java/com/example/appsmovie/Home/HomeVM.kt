@@ -10,7 +10,7 @@ import com.example.appsmovie.Api.MovieResult
 import com.example.appsmovie.Api.UserApiResponse
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+// ini udah ga kepake
 class HomeVM() : ViewModel() {
 
     private val _movies = MutableLiveData<List<MovieResult>>()

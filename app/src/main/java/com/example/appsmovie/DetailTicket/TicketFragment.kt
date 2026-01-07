@@ -10,7 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appsmovie.R
 import com.example.appsmovie.databinding.FragmentTicketBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TicketFragment : Fragment() {
     private var _binding: FragmentTicketBinding? = null
     private val binding get() = _binding!!
@@ -21,7 +23,7 @@ class TicketFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentTicketBinding.inflate(inflater, container, false)
         return binding.root
     }

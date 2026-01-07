@@ -5,13 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.appsmovie.ApiOffline.RoomApi
 import com.example.appsmovie.data.Movie
 import com.example.appsmovie.databinding.ItemfavoriteBinding
 import kotlin.text.format
 
-class FavoriteAdapter(
-    private var movies: List<Movie>
+class FavoriteAdapter (
+    private var movies: MutableList<Movie>
 ) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+
 
     private var itemClickListener: OnItemClickListener? = null
 
@@ -47,7 +49,7 @@ class FavoriteAdapter(
         val movie = movies[position]
         holder.binding.apply {
             Glide.with(holder.itemView.context)
-                .load(movie.poster_path)
+                .load(movie.posterUrl)
                 .placeholder(com.example.appsmovie.R.drawable.item)
                 .error(com.example.appsmovie.R.drawable.item)
                 .into(ivFavorite)
@@ -63,8 +65,9 @@ class FavoriteAdapter(
 
     override fun getItemCount(): Int = movies.size
 
-   fun updateData(newMovies: List<Movie>) {
-        this.movies = newMovies
+    fun setData(newMovies: List<Movie>) {
+        movies.clear()
+        movies.addAll(newMovies)
         notifyDataSetChanged()
     }
 }

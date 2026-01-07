@@ -14,18 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appsmovie.ApiOffline.RoomApi // <<-- 1. GANTI TIPE DATA UTAMA
 import com.example.appsmovie.DetailFilm.DetailFilm
 import com.example.appsmovie.DetailUser.DetailUser
-import com.example.appsmovie.MovieOffline.MovieRepositoryVM // <<-- 2. GANTI VIEWMODEL
+import com.example.appsmovie.CleanArchitecture.Data.MovieRepositoryVM // <<-- 2. GANTI VIEWMODEL
 import com.example.appsmovie.RoomDatabase.AppDatabase // <<-- IMPORT DATABASE
 import com.example.appsmovie.Search.Search
-import com.example.appsmovie.ViewModelFactory // <<-- IMPORT FACTORY
 import com.example.appsmovie.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
-    private val movieViewModel: MovieRepositoryVM by viewModels {
-        val database = AppDatabase.getInstance(requireContext())
-        ViewModelFactory(database, requireContext().applicationContext)
-    }
-
+    private val movieViewModel: MovieRepositoryVM by viewModels()
     private lateinit var highlightsAdapter: AdapterOffline
     private lateinit var moviesAdapter: AdapterOffline
     private lateinit var tvSeriesAdapter: AdapterOffline
@@ -84,11 +81,11 @@ class HomeFragment : Fragment() {
         binding.rvMiniseries.adapter = tvMiniSeriesAdapter
 
         val clickListener = object : AdapterOffline.OnItemClickListener {
-            override fun onItemClick(movie: RoomApi) { // <-- Tipenya sekarang RoomApi
+            override fun onItemClick(movie: RoomApi) {
                 val intent = Intent(requireActivity(), DetailFilm::class.java)
                 intent.putExtra("MOVIE_ID", movie.id)
-                // Langsung ambil .title karena sudah String
                 intent.putExtra("MOVIE_TITLE", movie.title)
+                intent.putExtra("MOVIE_GENRE",movie.genre)
                 intent.putExtra("MOVIE_POSTER_URL", movie.posterUrl)
                 startActivity(intent)
             }

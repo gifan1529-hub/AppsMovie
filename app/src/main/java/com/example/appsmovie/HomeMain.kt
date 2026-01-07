@@ -1,5 +1,6 @@
 package com.example.appsmovie
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -15,7 +16,9 @@ import com.example.appsmovie.databinding.NavbuttonBinding
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeMain : AppCompatActivity() {
     private lateinit var binding: NavbuttonBinding
     private lateinit var navController: NavController
@@ -43,6 +46,7 @@ class HomeMain : AppCompatActivity() {
             handleIntentNavigation(intent)
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         val newIntent = intent

@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.navigation
 import com.example.appsmovie.EditUser.EditUser
@@ -16,12 +17,13 @@ import com.example.appsmovie.R
 import com.example.appsmovie.SharedPreferences.SharedPreferences
 import com.example.appsmovie.SignIn.SignIn
 import com.example.appsmovie.databinding.DetailuserBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailUser : AppCompatActivity() {
 
     private lateinit var binding: DetailuserBinding
     private val viewModel: DetailUserVM by viewModels()
-
     private val editProfileLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -39,7 +41,13 @@ class DetailUser : AppCompatActivity() {
 
         val sharedPreferences = SharedPreferences(this)
         val userEmail = sharedPreferences.getUserEmail()
-        binding.email.text = userEmail ?: "Email tidak ditemukan"
+        viewModel.loadUserDetail()
+
+        if (userEmail != null) {
+            binding.email.text = userEmail
+        } else {
+            Toast.makeText(this, "Error: ID User tidak valid.", Toast.LENGTH_LONG).show()
+        }
 
         binding.linearLayout.setOnClickListener {
             val intent = Intent(this, HomeMain::class.java).apply {
@@ -80,8 +88,6 @@ class DetailUser : AppCompatActivity() {
 
        observeLogoutEvent()
     }
-
-
 
     private fun refreshUserData() {
         val sharedPreferences = SharedPreferences(this)

@@ -22,4 +22,19 @@ interface RoomDao {
     @Query("DELETE FROM movies")
     suspend fun clearAllMovies()
 
+    @Query("SELECT * FROM movies WHERE title LIKE :query")
+    suspend fun searchMoviesByTitle(query: String): List<RoomApi>
+
+    @Query("SELECT * FROM movies WHERE id = :movieId")
+    suspend fun getMovieById(movieId: String): RoomApi?
+
+    @Query("SELECT * FROM movies WHERE isFavorite = 1")
+    fun getFavoriteMovies(): Flow<List<RoomApi>>
+
+    @Query("UPDATE movies SET isFavorite = :isFavorite WHERE id = :movieId")
+    suspend fun updateFavoriteStatus(movieId: String, isFavorite: Boolean)
+
+    @Query("SELECT isFavorite FROM movies WHERE id = :movieId")
+    suspend fun isMovieFavorite(movieId: String): Boolean
+
 }

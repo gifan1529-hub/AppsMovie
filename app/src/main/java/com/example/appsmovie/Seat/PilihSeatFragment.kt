@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appsmovie.BookingManager
 import com.example.appsmovie.Ticket.BookingTicketVM
 import com.example.appsmovie.databinding.FragmentPilihSeatBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
-
+@AndroidEntryPoint
 class PilihSeatFragment : Fragment() {
 
     private var _binding: FragmentPilihSeatBinding? = null

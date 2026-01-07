@@ -4,9 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.appsmovie.EditUser.Domain.Usecase.GetUserUC
+import com.example.appsmovie.EditUser.Domain.Usecase.UpdateUserUC
 import com.example.appsmovie.RoomDatabase.AppDatabase
 import com.example.appsmovie.RoomDatabase.User
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 data class EditUserUiState(
     val email: String = "",
@@ -15,10 +19,11 @@ data class EditUserUiState(
     val updateSuccess: Boolean = false,
     val error: String? = null
 )
-
-class EditUserVM (private val database: AppDatabase): ViewModel() {
-
-    private val userDao = database.userDao()
+@HiltViewModel
+class EditUserVM @Inject constructor (
+    private val getUserUC: GetUserUC,
+    private val updateUserUC: UpdateUserUC
+): ViewModel() {
 
     private val _uiState = MutableLiveData<EditUserUiState>()
     val uiState: LiveData<EditUserUiState> get() = _uiState
@@ -32,7 +37,7 @@ class EditUserVM (private val database: AppDatabase): ViewModel() {
     fun loadUser(userEmail: String) {
         viewModelScope.launch {
             _uiState.value = _uiState.value?.copy(isLoading = true)
-            currentUser = userDao.get(userEmail)
+            currentUser = getUserUC(userEmail)
             currentUser?.let { user ->
                 _uiState.value = _uiState.value?.copy(
                     email = user.email,
@@ -71,7 +76,7 @@ class EditUserVM (private val database: AppDatabase): ViewModel() {
             )
             _uiState.value = currentState.copy(isLoading = true)
 
-            userDao.updateUser(updatedUser)
+           updateUserUC(updatedUser)
 
             _uiState.value = currentState.copy(
                 updateSuccess = true,

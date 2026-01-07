@@ -14,7 +14,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.appsmovie.databinding.DetailticketsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class detailTicket2 : AppCompatActivity() {
 
     private lateinit var binding: DetailticketsBinding
@@ -30,28 +32,33 @@ class detailTicket2 : AppCompatActivity() {
         val bookingId = intent.getIntExtra("BOOKING_ID", -1)
         if (bookingId != -1) {
             Log.d("DetailTicketDebug", "Booking ID: $bookingId")
-            viewModel.getBookingById(bookingId).observe(this) { booking ->
-                if (booking != null) {
-                    binding.movietitle.text = booking.movieTitle
-                    binding.ticket.text = "${booking.adultTickets} Adult, ${booking.childTickets} Child"
-                    binding.sessions.text = booking.session
-                    binding.seatnumber.text = booking.seatIds.joinToString(", ")
-                    binding.buffets.text = booking.buffetItems
-                    binding.theater.text = booking.theater
-
-                    Glide.with(this)
-                        .load(booking.moviePosterUrl)
-                        .placeholder(R.drawable.item)
-                        .into(binding.ivDetails)
-                }
-            }
+            viewModel.loadBookingDetails(bookingId)
+            observeVM()
         }
         binding.ivBacks.setOnClickListener {
             finish()
         }
 
         binding.toPDF.setOnClickListener {
-            exportViewToPdf(binding.ticketContainer, "MyTicket_${bookingId}.pdf")
+            exportViewToPdf(binding.ticketContainer, "MyTicket${bookingId}.pdf")
+        }
+    }
+
+    private fun observeVM() {
+        viewModel.ticketDetails.observe(this) { booking ->
+            if (booking != null) {
+                binding.movietitle.text = booking.movieTitle
+                binding.ticket.text = "${booking.adultTickets} Adult, ${booking.childTickets} Child"
+                binding.sessions.text = booking.session
+                binding.seatnumber.text = booking.seatIds.joinToString(", ")
+                binding.buffets.text = booking.buffetItems
+                binding.theater.text = booking.theater
+
+                Glide.with(this)
+                    .load(booking.moviePosterUrl)
+                    .placeholder(R.drawable.item)
+                    .into(binding.ivDetails)
+            }
         }
     }
 

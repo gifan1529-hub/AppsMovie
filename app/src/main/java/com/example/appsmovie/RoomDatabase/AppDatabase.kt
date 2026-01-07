@@ -16,7 +16,8 @@ import com.example.appsmovie.data.Movie
     BookingHistory::class,
     Movie::class,
     RoomApi::class],
-    version = 11)
+    version = 14,
+    exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun roomDao(): RoomDao
     abstract fun userDao(): UserDao

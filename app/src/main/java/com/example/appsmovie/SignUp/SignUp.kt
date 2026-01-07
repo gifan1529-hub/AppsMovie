@@ -10,21 +10,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appsmovie.R
-import com.example.appsmovie.RoomDatabase.AppDatabase
 import com.example.appsmovie.RoomDatabase.User
 import com.example.appsmovie.SignIn.SignIn
-import com.example.appsmovie.ViewModelFactory
+import com.example.appsmovie.SignUp.Domain.Usecase.RegistrationStatus
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUp : AppCompatActivity() {
     private lateinit var etemail : EditText
     private lateinit var etpass : EditText
     private lateinit var btnSignUp : Button
     private lateinit var btnSignIn : TextView
 
-    private val viewModel: SignUpVM by viewModels{
-        val database = AppDatabase.getInstance(applicationContext)
-        ViewModelFactory(database, applicationContext)
-    }
+    private val viewModel: SignUpVM by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -49,30 +48,35 @@ class SignUp : AppCompatActivity() {
         }
         btnSignUp.setOnClickListener {
             Register()
+            Toast.makeText(this, "Registrasi berhasil", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, SignIn::class.java))
+            finish()
         }
     }
 
     private fun observeViewModel(){
         viewModel.registerStatus.observe(this) { status ->
             when (status) {
-                is SignUpVM.RegistrationStatus.SUCCESS -> {
+                RegistrationStatus.Success-> {
                     Toast.makeText(this, "SignUp berhasil", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, SignIn::class.java))
                     finish()
                 }
-                is SignUpVM.RegistrationStatus.EMAIL_EXISTS -> {
+                RegistrationStatus.EmailExists -> {
                     Toast.makeText(this, "Email sudah terdaftar", Toast.LENGTH_SHORT).show()
                 }
-                is SignUpVM.RegistrationStatus.FAILURE -> {
+                is RegistrationStatus.Failure -> {
                     Toast.makeText(this, "Registrasi gagal", Toast.LENGTH_SHORT).show()
                 }
+
+                else -> {}
             }
         }
     }
 
     private fun Register() {
-        val email = etemail.text.toString()
-        val password = etpass.text.toString()
+        val email = etemail.text.toString().trim()
+        val password = etpass.text.toString().trim()
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email dan password harus diisi", Toast.LENGTH_SHORT).show()
@@ -86,7 +90,6 @@ class SignUp : AppCompatActivity() {
             email = email,
             userPassword = password
         )
-        viewModel.registerUser(newUser
-        )
+        viewModel.registerUser(newUser)
     }
 }

@@ -33,6 +33,7 @@ class DetailTicketAdapter (private val ticketList: List<BookingHistory>) :
                 .into(posterimage)
         }
     }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -61,7 +62,4 @@ class DetailTicketAdapter (private val ticketList: List<BookingHistory>) :
     override fun getItemCount(): Int {
         return ticketList.size
     }
-
-
-
 }

@@ -10,17 +10,18 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.appsmovie.R
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.appsmovie.DetailUser.DetailUser
 import com.example.appsmovie.RoomDatabase.AppDatabase
 import com.example.appsmovie.SharedPreferences.SharedPreferences
-import com.example.appsmovie.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class EditUser : AppCompatActivity() {
-    private lateinit var viewModel: EditUserVM
+    private val viewModel: EditUserVM by viewModels()
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnUpdate: Button
@@ -38,11 +39,6 @@ class EditUser : AppCompatActivity() {
         btnUpdate = findViewById(R.id.save)
         ivBack = findViewById(R.id.iv_balik)
         progressBar = findViewById(R.id.loding)
-
-
-        val database = AppDatabase.getInstance(applicationContext)
-        val viewModelFactory = ViewModelFactory(database, applicationContext)
-        viewModel = ViewModelProvider(this, viewModelFactory)[EditUserVM::class.java]
 
         intent.getStringExtra("userEmail")?.let { email ->
             viewModel.loadUser(email)
