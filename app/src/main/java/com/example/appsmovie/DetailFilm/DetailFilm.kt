@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.appsmovie.R
 import com.example.appsmovie.Ticket.BookingTicket
-// 1. Import ViewBinding yang sudah digenerate otomatis
 import com.example.appsmovie.databinding.DetailfilmBinding
 import dagger.hilt.android.AndroidEntryPoint
 

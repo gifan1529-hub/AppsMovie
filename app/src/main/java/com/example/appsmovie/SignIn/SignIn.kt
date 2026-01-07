@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.appsmovie.HomeMain
 import com.example.appsmovie.SignUp.SignUp
-import com.example.appsmovie.SharedPreferences.SharedPreferences
-import com.example.appsmovie.SignIn.Domain.Usecase.LoginResult
 import com.example.appsmovie.databinding.SigninBinding
+import com.example.core.SharedPreferences.SharedPreferences
+import com.example.core.UseCase_Repository.SignIn.Usecase.LoginResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlin.getValue

@@ -10,9 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appsmovie.R
-import com.example.appsmovie.RoomDatabase.User
 import com.example.appsmovie.SignIn.SignIn
-import com.example.appsmovie.SignUp.Domain.Usecase.RegistrationStatus
+import com.example.core.Database.RoomDatabase.User
+import com.example.core.UseCase_Repository.SignUp.Domain.Usecase.RegistrationStatus
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

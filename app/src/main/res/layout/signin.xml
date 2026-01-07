@@ -1,109 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="1090dp">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/gambar"
-        android:layout_marginBottom="209dp"
-        />
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#A6000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/movie"
-        android:layout_marginTop="380dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/movie"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/guideline_center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53" />
 
     <EditText
-        android:layout_marginTop="90dp"
         android:id="@+id/etemail"
-        android:layout_width="351dp"
-        android:textColor="@color/white"
+        android:layout_width="0dp"
         android:layout_height="57dp"
-        android:layout_below="@id/movie"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/abu"
         android:hint="E - Mail"
         android:paddingLeft="15dp"
+        android:textColor="@color/white"
         android:textColorHint="@color/abumid"
         android:textSize="20dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_center" />
 
     <EditText
-        android:layout_marginTop="20dp"
         android:id="@+id/etpass"
-        android:layout_width="351dp"
+        android:layout_width="0dp"
         android:layout_height="57dp"
-        android:layout_below="@id/etemail"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/abu"
-        android:textColor="@color/white"
         android:hint="Password"
         android:paddingLeft="15dp"
+        android:textColor="@color/white"
         android:textColorHint="@color/abumid"
         android:textSize="20dp"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/etemail"
+        app:layout_constraintStart_toStartOf="@+id/etemail"
+        app:layout_constraintTop_toBottomOf="@+id/etemail" />
 
     <Button
-        android:layout_marginTop="30dp"
         android:id="@+id/btnoke"
-        android:layout_width="351dp"
+        android:layout_width="0dp"
         android:layout_height="57dp"
-        android:layout_below="@id/etpass"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_shape"
-        android:backgroundTint="@color/abu"
-        android:textSize="20dp"
+        android:backgroundTint="@color/ungu"
         android:fontFamily="@font/poppinsregular"
         android:text="Sign In"
-        />
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/etpass"
+        app:layout_constraintStart_toStartOf="@+id/etpass"
+        app:layout_constraintTop_toBottomOf="@+id/etpass" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_below="@+id/btnoke"
-        android:layout_marginTop="17dp"
-        >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dont you have an account ?"
-        android:fontFamily="@font/poppinsregular"
-        android:textSize="12dp"
-        android:textColor="@color/white"
-        />
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/background_image"
+        app:layout_constraintTop_toBottomOf="@+id/btnoke"
+        app:layout_constraintVertical_bias="0.208"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Sign Up "
             android:fontFamily="@font/poppinsregular"
-            android:textSize="12dp"
-            android:textColor="@color/ungu"
+            android:text="Dont you have an account ?"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+        <TextView
             android:id="@+id/tvsignup"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsregular"
+            android:text=" Sign Up "
+            android:textColor="@color/ungu"
+            android:textSize="12dp" />
     </LinearLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/buled"
-        android:layout_marginTop="450dp"
-        />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/buledkiri"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="450dp"
-        />
+    <!-- ... (Sisa layout TextView bisa ditambahkan di bawah Button dengan cara yang sama) ... -->
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

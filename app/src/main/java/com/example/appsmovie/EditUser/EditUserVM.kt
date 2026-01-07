@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.EditUser.Domain.Usecase.GetUserUC
-import com.example.appsmovie.EditUser.Domain.Usecase.UpdateUserUC
-import com.example.appsmovie.RoomDatabase.AppDatabase
-import com.example.appsmovie.RoomDatabase.User
+import com.example.core.Database.RoomDatabase.User
+import com.example.core.UseCase_Repository.EditUser.Domain.Usecase.GetUserUC
+import com.example.core.UseCase_Repository.EditUser.Domain.Usecase.UpdateUserUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

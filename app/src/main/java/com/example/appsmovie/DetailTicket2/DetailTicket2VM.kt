@@ -1,15 +1,11 @@
 package com.example.appsmovie.DetailTicket2
 
-import android.app.Application
-import androidx.activity.result.launch
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.DetailTicket2.Domain.Usecase.GetBookingDetailUC
-import com.example.appsmovie.RoomDatabase.AppDatabase
-import com.example.appsmovie.RoomDatabase.BookingHistory
+import com.example.core.Database.BookingDatabase.BookingHistory
+import com.example.core.UseCase_Repository.DetailTicket2.Domain.Usecase.GetBookingDetailUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

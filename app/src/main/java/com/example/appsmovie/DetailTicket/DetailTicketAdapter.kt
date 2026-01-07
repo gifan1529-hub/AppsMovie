@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appsmovie.DetailTicket2.detailTicket2
 import com.example.appsmovie.R
-import com.example.appsmovie.RoomDatabase.BookingHistory
+import com.example.core.Database.BookingDatabase.BookingHistory
+
 import kotlin.jvm.java
 
 class DetailTicketAdapter (private val ticketList: List<BookingHistory>) :

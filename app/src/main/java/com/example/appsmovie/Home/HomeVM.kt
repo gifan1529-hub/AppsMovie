@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.Api.ApiClient
-import com.example.appsmovie.Api.MovieResult
-import com.example.appsmovie.Api.UserApiResponse
+import com.example.core.Api.ApiClient
+import com.example.core.Api.MovieResult
+import com.example.core.Api.UserApiResponse
 import kotlinx.coroutines.launch
 import java.lang.Exception
 // ini udah ga kepake

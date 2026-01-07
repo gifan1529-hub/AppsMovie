@@ -1,24 +1,16 @@
 package com.example.appsmovie.DetailFilm
 
-import android.app.Application
-import android.util.Log
-import android.util.Log.e
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.Api.ApiClient
-import com.example.appsmovie.Api.MovieResult
-import com.example.appsmovie.ApiOffline.RoomApi
-import com.example.appsmovie.CleanArchitecture.Domain.Repository.MovieRepository
-import com.example.appsmovie.DetailFilm.Domain.Usecase.DetailResult
-import com.example.appsmovie.DetailFilm.Domain.Usecase.GetMovieDetailUC
-import com.example.appsmovie.DetailFilm.Domain.Usecase.ToggleFavoriteUC
-import com.example.appsmovie.RoomDatabase.AppDatabase
-import com.example.appsmovie.SharedPreferences.SharedPreferences
-import com.example.appsmovie.data.Movie
-import com.example.appsmovie.data.MovieDao
+import com.example.core.CleanArchitecture.Domain.Repository.MovieRepository
+import com.example.core.Database.ApiOffline.RoomApi
+import com.example.core.DetailFilm.Domain.Usecase.DetailResult
+import com.example.core.DetailFilm.Domain.Usecase.GetMovieDetailUC
+import com.example.core.DetailFilm.Domain.Usecase.ToggleFavoriteUC
+import com.example.core.SharedPreferences.SharedPreferences
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

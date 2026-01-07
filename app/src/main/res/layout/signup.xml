@@ -1,111 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="1090dp">
+    android:layout_height="match_parent"
+    tools:context=".SignUp.SignUp">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/gambar"
-        android:layout_marginBottom="209dp"
-        />
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#A6000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/movie"
-        android:layout_marginTop="380dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/movie"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/guideline_center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
 
-    <EditText
-        android:layout_marginTop="90dp"
-        android:id="@+id/email"
-        android:layout_width="351dp"
-        android:layout_height="57dp"
-        android:layout_below="@id/movie"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="@color/abu"
-        android:hint="E - Mail"
-        android:fontFamily="@font/poppinsregular"
-        android:paddingLeft="15dp"
-        android:textColorHint="@color/abumid"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        />
-
-    <EditText
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppinsregular"
-        android:textColor="@color/white"
-        android:id="@+id/pass"
-        android:layout_width="351dp"
-        android:layout_height="57dp"
-        android:layout_below="@id/email"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="@color/abu"
-        android:hint="Password"
-        android:paddingLeft="15dp"
-        android:textColorHint="@color/abumid"
-        android:textSize="20dp"
-        />
-
-    <Button
-        android:layout_marginTop="30dp"
-        android:id="@+id/signup"
-        android:layout_width="351dp"
-        android:layout_height="57dp"
-        android:layout_below="@id/pass"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="@color/abu"
-        android:textSize="20dp"
-        android:fontFamily="@font/poppinsregular"
-        android:text="Sign Up"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/abu"
+        android:fontFamily="@font/poppinsregular"
+        android:hint="E - Mail"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/abumid"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_center" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/abu"
+        android:fontFamily="@font/poppinsregular"
+        android:hint="Password"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/abumid"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/ungu"
+        android:fontFamily="@font/poppinsregular"
+        android:text="Sign Up"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/pass"
+        app:layout_constraintStart_toStartOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:gravity="center"
-        android:layout_below="@+id/signup"
-        android:layout_marginTop="17dp"
-        >
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/signup"
+        app:layout_constraintStart_toStartOf="@+id/signup"
+        app:layout_constraintTop_toBottomOf="@+id/signup">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Do have an account ?"
             android:fontFamily="@font/poppinsregular"
-            android:textSize="12dp"
+            android:text="Do have an account ?"
             android:textColor="@color/white"
-            />
+            android:textSize="12dp" />
+
         <TextView
             android:id="@+id/sigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Sign In "
             android:fontFamily="@font/poppinsregular"
-            android:textSize="12dp"
+            android:paddingStart="4dp"
+            android:text="Sign In"
             android:textColor="@color/ungu"
-            />
+            android:textSize="12dp" />
     </LinearLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/buled"
-        android:layout_marginTop="450dp"
-        />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/buledkiri"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="450dp"
-        />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

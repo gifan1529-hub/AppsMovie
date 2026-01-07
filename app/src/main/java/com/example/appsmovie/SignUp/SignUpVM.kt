@@ -3,9 +3,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.RoomDatabase.User
-import com.example.appsmovie.SignUp.Domain.Usecase.RegisterUserUC
-import com.example.appsmovie.SignUp.Domain.Usecase.RegistrationStatus
+import com.example.core.Database.RoomDatabase.User
+import com.example.core.UseCase_Repository.SignUp.Domain.Usecase.RegisterUserUC
+import com.example.core.UseCase_Repository.SignUp.Domain.Usecase.RegistrationStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

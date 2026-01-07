@@ -1,13 +1,12 @@
 package com.example.appsmovie.Search
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.Api.ApiClient
-import com.example.appsmovie.Api.MovieResult
-import com.example.appsmovie.ApiOffline.RoomApi
+import com.example.core.Database.ApiOffline.RoomApi
+import com.example.core.UseCase_Repository.Searchs.SearchMovieUC
+import com.example.core.UseCase_Repository.Searchs.SearchResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

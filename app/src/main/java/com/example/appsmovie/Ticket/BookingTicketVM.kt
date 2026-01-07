@@ -4,20 +4,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.RoomDatabase.BookingHistoryDao
 import com.example.appsmovie.Seat.Seat
+import com.example.core.Database.BookingDatabase.BookingHistoryDao
+import com.example.core.UseCase_Repository.Tickets.BuffetItem
+import com.example.core.UseCase_Repository.Tickets.BuffetMenuUC
+import com.example.core.UseCase_Repository.Tickets.CalculatePriceUC
+import com.example.core.UseCase_Repository.Tickets.ValidateSeatUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
- data class BuffetItem(
-    val id: Int,
-    val name: String,
-    val description: String,
-    val price: Double,
-    val imageUrl: String,
-    var quantity: Int = 0
-)
+// data class BuffetItem(
+//    val id: Int,
+//    val name: String,
+//    val description: String,
+//    val price: Double,
+//    val imageUrl: String,
+//    var quantity: Int = 0
+//)
 
 data class BookingData(
     var movieId: String? = null,

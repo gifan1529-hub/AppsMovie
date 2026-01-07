@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appsmovie.DetailFilm.DetailFilm
-import com.example.appsmovie.Home.AdapterOffline
-import com.example.appsmovie.data.Movie
-
+import com.example.core.Database.MovieDatabase.Movie
 import com.example.appsmovie.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.collections.mutableListOf

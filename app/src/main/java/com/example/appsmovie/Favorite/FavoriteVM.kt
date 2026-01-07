@@ -1,22 +1,13 @@
 package com.example.appsmovie.Favorite
 
-import androidx.activity.result.launch
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
-import androidx.room.Room
-import com.example.appsmovie.ApiOffline.RoomApi
-import com.example.appsmovie.CleanArchitecture.Domain.Repository.MovieRepository
-import com.example.appsmovie.Favorite.Domain.Usecase.GetFavoriteMovieUC
-import com.example.appsmovie.SharedPreferences.SharedPreferences
-import com.example.appsmovie.data.Movie
-import com.example.appsmovie.data.MovieDao
+import com.example.core.CleanArchitecture.Domain.Repository.MovieRepository
+import com.example.core.Database.MovieDatabase.Movie
+import com.example.core.SharedPreferences.SharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel

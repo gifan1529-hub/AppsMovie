@@ -15,14 +15,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.appsmovie.BookingManager
-import com.example.appsmovie.HomeMain
-import com.example.appsmovie.PayementResultFragment
 import com.example.appsmovie.R
-import com.example.appsmovie.RoomDatabase.BookingHistory
+import com.example.core.Database.BookingDatabase.BookingHistory
 import com.example.appsmovie.Ticket.BookingTicketVM
 import com.example.appsmovie.databinding.FragmentPaymentBinding
 import java.text.NumberFormat
@@ -30,7 +27,7 @@ import java.util.Locale
 import android.Manifest
 import com.example.appsmovie.DetailTicket2.detailTicket2
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.log
+
 @AndroidEntryPoint
 class PaymentFragment : Fragment() {
 

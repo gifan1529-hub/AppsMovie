@@ -6,18 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.asLiveData // <<-- PENTING: IMPORT INI
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.appsmovie.ApiOffline.RoomApi // <<-- 1. GANTI TIPE DATA UTAMA
+import com.example.core.Database.ApiOffline.RoomApi
 import com.example.appsmovie.DetailFilm.DetailFilm
 import com.example.appsmovie.DetailUser.DetailUser
-import com.example.appsmovie.CleanArchitecture.Data.MovieRepositoryVM // <<-- 2. GANTI VIEWMODEL
-import com.example.appsmovie.RoomDatabase.AppDatabase // <<-- IMPORT DATABASE
 import com.example.appsmovie.Search.Search
 import com.example.appsmovie.databinding.FragmentHomeBinding
+import com.example.core.CleanArchitecture.Data.MovieRepositoryVM
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

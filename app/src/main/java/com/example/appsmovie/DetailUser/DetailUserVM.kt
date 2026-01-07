@@ -1,16 +1,12 @@
 package com.example.appsmovie.DetailUser
 
-import android.app.Application
-import androidx.activity.result.launch
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.DetailUser.Domain.Usecase.GetUserDetailsUC
-import com.example.appsmovie.DetailUser.Domain.Usecase.LogoutUserUc
-import com.example.appsmovie.DetailUser.Domain.Usecase.UserDetails
-import com.example.appsmovie.SharedPreferences.SharedPreferences
+import com.example.core.UseCase_Repository.DetailUser.Domain.Usecase.GetUserDetailsUC
+import com.example.core.UseCase_Repository.DetailUser.Domain.Usecase.LogoutUserUc
+import com.example.core.UseCase_Repository.DetailUser.Domain.Usecase.UserDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

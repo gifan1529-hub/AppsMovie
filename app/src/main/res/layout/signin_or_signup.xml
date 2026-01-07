@@ -1,88 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="1090dp"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/gambar"
-        android:layout_marginBottom="209dp"
-        android:id="@+id/image"
-        />
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#A6000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/movie"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/movieapp"
-        android:layout_marginTop="500dp"
-        />
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7">
 
-    <Button
-        android:id="@+id/btnsignin"
-        android:layout_marginTop="30dp"
-        android:layout_width="351dp"
-        android:layout_height="57dp"
-        android:layout_below="@id/movieapp"
-        android:layout_centerHorizontal="true"
-        android:text="Sign In"
-        android:textSize="20dp"
-        android:fontFamily="@font/poppinsregular"
-        android:textColor="@color/white"
-        android:background="@drawable/button_shape"
-        />
+        <ImageView
+            android:id="@+id/movieapp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/movie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="or"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/btnsignin"
-        android:textSize="20dp"
-        android:id="@+id/or"
-        />
+        <Button
+            android:id="@+id/btnsignin"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="@color/ungu"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Sign In"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movieapp" />
 
-    <Button
-        android:id="@+id/btnsignup"
-        android:layout_marginTop="10dp"
-        android:layout_width="351dp"
-        android:layout_height="57dp"
-        android:layout_below="@id/or"
-        android:layout_centerHorizontal="true"
-        android:text="Sign Up"
-        android:textSize="20dp"
-        android:fontFamily="@font/poppinsregular"
-        android:textColor="@color/white"
-        android:background="@drawable/button_shape"
-        android:backgroundTint="@color/ungu"
-        />
+        <TextView
+            android:id="@+id/or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="or"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnsignin" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/buled"
-        android:layout_marginTop="450dp"
-        />
+        <Button
+            android:id="@+id/btnsignup"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="@color/ungu"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/or" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/buledkiri"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="450dp"
-        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/kiriatas"
-        />
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appsmovie.R
-import com.example.appsmovie.Ticket.BuffetItem
+import com.example.core.UseCase_Repository.Tickets.BuffetItem
 import kotlin.io.path.name
 
     class BuffetAdapter(

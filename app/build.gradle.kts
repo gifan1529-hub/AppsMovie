@@ -110,6 +110,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.51.1")
     ksp("com.google.dagger:hilt-compiler:2.51.1")
 
+    implementation(project(":core"))
+
 
     // ViewModel KTX (jika belum ada)
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")

@@ -14,7 +14,7 @@ import androidx.navigation.navigation
 import com.example.appsmovie.EditUser.EditUser
 import com.example.appsmovie.HomeMain
 import com.example.appsmovie.R
-import com.example.appsmovie.SharedPreferences.SharedPreferences
+import com.example.core.SharedPreferences.SharedPreferences
 import com.example.appsmovie.SignIn.SignIn
 import com.example.appsmovie.databinding.DetailuserBinding
 import dagger.hilt.android.AndroidEntryPoint

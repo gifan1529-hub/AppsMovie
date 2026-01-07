@@ -1,6 +1,5 @@
 package com.example.appsmovie.EditUser
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -13,10 +12,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.ViewModelProvider
-import com.example.appsmovie.DetailUser.DetailUser
-import com.example.appsmovie.RoomDatabase.AppDatabase
-import com.example.appsmovie.SharedPreferences.SharedPreferences
+import com.example.core.SharedPreferences.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

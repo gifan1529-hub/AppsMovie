@@ -2,13 +2,11 @@ package com.example.appsmovie.Home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.appsmovie.Api.MovieResult
-import com.example.appsmovie.ApiOffline.RoomApi
 import com.example.appsmovie.databinding.CardbawahBinding
 import com.example.appsmovie.databinding.CardsampingBinding
+import com.example.core.Database.ApiOffline.RoomApi
 
 class AdapterOffline(private val layoutType: LayoutType) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

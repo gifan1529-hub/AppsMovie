@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appsmovie.BookingManager
 import com.example.appsmovie.R
-import com.example.appsmovie.Ticket.BookingTicketVM // Import Shared ViewModel
+import com.example.core.UseCase_Repository.Tickets.BuffetItem
+import com.example.appsmovie.Ticket.BookingTicketVM
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.ReadOnlyProperty
 @AndroidEntryPoint

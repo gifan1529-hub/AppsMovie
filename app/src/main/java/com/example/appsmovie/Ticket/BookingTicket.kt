@@ -13,7 +13,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.appsmovie.BookingManager
 import com.example.appsmovie.R
-import com.example.appsmovie.RoomDatabase.AppDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

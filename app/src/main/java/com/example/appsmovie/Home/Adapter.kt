@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.appsmovie.Api.MovieResult
 import com.example.appsmovie.R
+import com.example.core.Api.MovieResult
+
 // ini udah ga kepake
 class Adapter(private val layoutType: LayoutType) : RecyclerView.Adapter<Adapter.MovieViewHolder>() {
 

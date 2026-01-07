@@ -18,7 +18,6 @@
             android:paddingBottom="100dp"
             >
 
-            <!-- Backdrop Image -->
             <ImageView
                 android:id="@+id/iv_backdrop"
                 android:layout_width="0dp"
@@ -29,7 +28,17 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/item" />
 
-            <!-- Tombol Kembali -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#A6000000"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_backdrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
 
             <ImageView
                 android:id="@+id/favorite"
@@ -57,7 +66,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:alpha="0.5"/>
 
-            <!-- Poster Image -->
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_poster"
                 android:layout_width="120dp"
@@ -214,6 +222,7 @@
         android:layout_marginBottom="40dp"
         android:text="Buy Ticket Now"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:backgroundTint="#7E57C2"
         app:cornerRadius="16dp"

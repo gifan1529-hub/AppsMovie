@@ -1,15 +1,14 @@
 package com.example.appsmovie.Payment
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.appsmovie.RoomDatabase.AppDatabase
-import com.example.appsmovie.RoomDatabase.BookingHistory
-import com.example.appsmovie.SharedPreferences.SharedPreferences
 import com.example.appsmovie.Ticket.BookingData
+import com.example.core.Database.BookingDatabase.BookingHistory
+import com.example.core.Database.RoomDatabase.AppDatabase
+import com.example.core.SharedPreferences.SharedPreferences
 import kotlinx.coroutines.launch
 
 class PaymentFragmentVM(application: Application) : AndroidViewModel(application) {

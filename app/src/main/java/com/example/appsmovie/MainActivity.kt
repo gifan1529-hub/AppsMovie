@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appsmovie.HomeMain
 import com.example.appsmovie.R
 import com.example.appsmovie.SignIn.SignIn
 import com.example.appsmovie.SignUp.SignUp
-import com.example.appsmovie.SharedPreferences.SharedPreferences
+import com.example.core.SharedPreferences.SharedPreferences
+import kotlin.jvm.java
 
 
 class MainActivity : AppCompatActivity() {

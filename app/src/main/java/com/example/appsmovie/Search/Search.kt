@@ -2,16 +2,13 @@ package com.example.appsmovie.Search
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import androidx.glance.visibility
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appsmovie.DetailFilm.DetailFilm
-import com.example.appsmovie.ApiOffline.RoomApi // Ganti model ke RoomApi
 import com.example.appsmovie.databinding.SearchBinding // Import ViewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
